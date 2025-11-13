@@ -47,13 +47,11 @@ export default function MobileHeader() {
         />
 
         <aside
-          className={`relative w-72 max-w-[80%] min-h-[100dvh] bg-white px-6 py-6 shadow-xl transition-transform duration-300 overflow-y-auto box-border ${
+          className={`relative w-72 max-w-[80%] min-h-[100dvh] bg-white px-6 py-6 shadow-xl transition-transform duration-300 overflow-y-auto box-border flex flex-col ${
             isMenuOpen ? "translate-x-0" : "-translate-x-full"
           }`}
         >
-          <h2 className="mb-8 text-lg font-semibold text-gray-900">Menu</h2>
-
-          <nav className="flex flex-col gap-1">
+          <nav className="flex flex-1 flex-col gap-1">
             {sidebarItems.map(({ href, label, icon: Icon }) => (
               <Link
                 key={href}
@@ -76,13 +74,13 @@ export default function MobileHeader() {
               <Image
                 src="/user-avatar.png"
                 alt="Avatar do usuario"
-                width={36}
-                height={36}
-                className="rounded-full object-cover"
+                width={40}
+                height={40}
+                className="h-10 w-10 rounded-full object-cover"
               />
-              <div>
-                <p className="text-sm font-semibold text-gray-900">Felipe</p>
-                <p className="text-xs text-gray-500">Administrador</p>
+              <div className="flex flex-col leading-tight">
+                <p className="m-0 text-sm font-semibold text-gray-900">Felipe</p>
+                <p className="m-0 text-xs text-gray-500">Administrador</p>
               </div>
             </div>
 

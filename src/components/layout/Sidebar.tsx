@@ -8,9 +8,9 @@ import {
   Users,
   Wrench,
   History,
-  Settings,
   LayoutDashboard,
   LogOut,
+  UserCog,
 } from "lucide-react";
 
 type SidebarItem = {
@@ -20,12 +20,13 @@ type SidebarItem = {
 };
 
 export const sidebarItems: SidebarItem[] = [
-  { href: "/dashboard", label: "Resumo", icon: LayoutDashboard },
-  { href: "/dashboard/agenda", label: "Agenda", icon: CalendarDays },
-  { href: "/dashboard/clientes", label: "Clientes", icon: Users },
-  { href: "/dashboard/servicos", label: "Servicos", icon: Wrench },
-  { href: "/dashboard/agendamentos", label: "Historico", icon: History },
-  { href: "/dashboard/configuracoes", label: "Configuracoes", icon: Settings },
+  { href: "/in", label: "Resumo", icon: LayoutDashboard },
+  { href: "/in/agenda", label: "Agenda", icon: CalendarDays },
+  { href: "/in/clientes", label: "Clientes", icon: Users },
+  { href: "/in/colaboradores", label: "Colaboradores", icon: UserCog },
+  { href: "/in/servicos", label: "Servicos", icon: Wrench },
+  { href: "/in/agendamentos", label: "Historico", icon: History },
+  { href: "/login", label: "Sair", icon: LogOut },
 ];
 
 export default function Sidebar() {
@@ -35,8 +36,6 @@ export default function Sidebar() {
     <aside className="hidden md:flex md:w-64 bg-white shadow-md px-6 py-6 md:h-[100dvh] md:min-h-[100dvh] box-border">
       <div className="flex w-full h-full flex-col">
         <div className="flex flex-col flex-1">
-          <h1 className="text-2xl font-bold text-primary mb-8">ZapGenda</h1>
-
           <nav className="flex flex-col gap-1">
             {sidebarItems.map(({ href, label, icon: Icon }) => (
               <Link
@@ -62,21 +61,18 @@ export default function Sidebar() {
               alt="Avatar do usuario"
               width={40}
               height={40}
-              className="rounded-full object-cover"
+              className="h-10 w-10 rounded-full object-cover"
             />
-            <div>
-              <p className="text-sm font-semibold text-gray-900">Felipe</p>
-              <p className="text-xs text-gray-500">Administrador</p>
+            <div className="flex flex-col leading-tight">
+              <p className="m-0 text-sm font-semibold text-gray-900">Felipe</p>
+              <Link
+                href="/in/configuracoes"
+                className="m-0 text-xs font-medium text-primary hover:underline"
+              >
+                Editar perfil
+              </Link>
             </div>
           </div>
-
-          <Link
-            href="/login"
-            className="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-red-500 transition-colors"
-          >
-            <LogOut size={16} />
-            Sair
-          </Link>
         </div>
       </div>
     </aside>
